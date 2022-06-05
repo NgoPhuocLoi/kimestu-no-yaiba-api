@@ -27,10 +27,14 @@ app.get("/v1", async (req, res) => {
     $(".portal", html).each(function () {
       const name = $(this).find("a").attr("title");
       const detailUrl = $(this).find("a").attr("href");
-      const image = $(this).find("a > img").attr("data-src");
+      const image =
+        $(this).find("a > img").attr("data-src") ||
+        $(this).find("a > img").attr("src");
       thumbnails.push({
         name,
-        detailUrl: "http://localhost:5000/v1" + detailUrl.split("/wiki")[1],
+        detailUrl:
+          "https://kimetsu-no-yaiba-api.onrender.com/v1" +
+          detailUrl.split("/wiki")[1],
         image,
       });
     });
